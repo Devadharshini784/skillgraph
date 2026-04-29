@@ -10,28 +10,24 @@ const submitQuiz = async (req, res) => {
     let earnedWeight = 0;
 
     skills.forEach((skillItem, index) => {
-      const weight = skills.length - index; // higher ranked skills worth more
+      const weight = skills.length - index;
       totalWeight += weight;
       const confidence = answers[skillItem.skill] ?? 0;
-      // 2 = know it (full), 1 = learning (half), 0 = don't know
       earnedWeight += weight * (confidence / 2);
     });
 
     const readinessScore = Math.round((earnedWeight / totalWeight) * 100);
 
-    // Save each skill answer to user_skills table
+    // Save each skill to DB
     for (const skillItem of skills) {
       const confidence = answers[skillItem.skill] ?? 0;
       const status = confidence === 2 ? 'known' : confidence === 1 ? 'learning' : 'todo';
 
-      // Check if skill exists in skills table
-      let skillRecord = await pool.query(
-        'SELECT id FROM skills WHERE name = $1', [skillItem.skill]
-      );
-
+      // Find or create skill
+      let skillRecord = await pool.query('SELECT id FROM skills WHERE name = $1', [skillItem.skill]);
       let skillId;
+
       if (skillRecord.rows.length === 0) {
-        // Insert skill if it doesn't exist
         const newSkill = await pool.query(
           'INSERT INTO skills (name, frequency_score) VALUES ($1, $2) RETURNING id',
           [skillItem.skill, skillItem.count]
@@ -41,7 +37,7 @@ const submitQuiz = async (req, res) => {
         skillId = skillRecord.rows[0].id;
       }
 
-      // Upsert user_skill
+      // Save user skill
       await pool.query(`
         INSERT INTO user_skills (user_id, skill_id, status, confidence)
         VALUES ($1, $2, $3, $4)
@@ -50,16 +46,12 @@ const submitQuiz = async (req, res) => {
       `, [userId, skillId, status, confidence]);
     }
 
-    // Update user's target role
-    await pool.query(
-      'UPDATE users SET target_role = $1 WHERE id = $2',
-      [role, userId]
-    );
+    // Update target role
+    await pool.query('UPDATE users SET target_role = $1 WHERE id = $2', [role, userId]);
 
-    res.json({
-      message: 'Quiz submitted!',
-      readinessScore
-    });
+    console.log(`Quiz saved for user ${userId} — score: ${readinessScore}%`);
+
+    res.json({ message: 'Quiz submitted!', readinessScore });
 
   } catch (error) {
     console.error('Quiz submit error:', error.message);
