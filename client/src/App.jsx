@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import Quiz from './pages/Quiz';
 
 const PrivateRoute = ({ children }) => {
   const { token } = useAuth();
@@ -18,6 +19,9 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={
             <PrivateRoute><Dashboard /></PrivateRoute>
+          } />
+          <Route path="/quiz" element={
+            <PrivateRoute><Quiz /></PrivateRoute>
           } />
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>

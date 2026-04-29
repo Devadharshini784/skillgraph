@@ -113,9 +113,12 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
-            <button style={styles.quizBtn}>
-              Take Skill Gap Quiz →
-            </button>
+            <button 
+  style={styles.quizBtn} 
+  onClick={() => navigate('/quiz', { state: { skills, role } })}
+>
+  Take Skill Gap Quiz →
+</button>
           </div>
         )}
 
