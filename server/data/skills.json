@@ -1,0 +1,31 @@
+{
+  "languages": [
+    "javascript", "python", "java", "typescript", "c++", "c#", "go", "rust",
+    "php", "ruby", "swift", "kotlin", "scala", "r", "matlab", "bash", "shell"
+  ],
+  "frontend": [
+    "react", "angular", "vue", "nextjs", "html", "css", "tailwind", "bootstrap",
+    "redux", "webpack", "vite", "sass", "jquery", "figma", "responsive design"
+  ],
+  "backend": [
+    "nodejs", "express", "django", "flask", "spring", "fastapi", "nestjs",
+    "rest api", "graphql", "microservices", "websockets", "nginx", "apache"
+  ],
+  "databases": [
+    "postgresql", "mysql", "mongodb", "redis", "sqlite", "oracle", "firebase",
+    "dynamodb", "cassandra", "elasticsearch", "supabase", "prisma", "sequelize"
+  ],
+  "devops": [
+    "docker", "kubernetes", "aws", "azure", "gcp", "ci/cd", "jenkins",
+    "github actions", "terraform", "linux", "git", "ansible", "prometheus"
+  ],
+  "tools": [
+    "git", "github", "postman", "jira", "figma", "vs code", "linux",
+    "agile", "scrum", "jest", "mocha", "selenium", "cypress"
+  ],
+  "concepts": [
+    "data structures", "algorithms", "system design", "oop", "mvc",
+    "tdd", "agile", "machine learning", "deep learning", "nlp",
+    "data analysis", "problem solving", "communication"
+  ]
+}
