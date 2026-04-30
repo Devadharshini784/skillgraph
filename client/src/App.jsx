@@ -5,6 +5,7 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Quiz from './pages/Quiz';
 import Roadmap from './pages/Roadmap';
+import Landing from './pages/Landing';
 
 const PrivateRoute = ({ children }) => {
   const { token } = useAuth();
@@ -16,6 +17,7 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={
@@ -27,7 +29,6 @@ function App() {
           <Route path="/roadmap" element={
             <PrivateRoute><Roadmap /></PrivateRoute>
           } />
-          <Route path="/" element={<Navigate to="/login" />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
