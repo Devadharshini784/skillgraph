@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Quiz from './pages/Quiz';
+import Roadmap from './pages/Roadmap';
 
 const PrivateRoute = ({ children }) => {
   const { token } = useAuth();
@@ -22,6 +23,9 @@ function App() {
           } />
           <Route path="/quiz" element={
             <PrivateRoute><Quiz /></PrivateRoute>
+          } />
+          <Route path="/roadmap" element={
+            <PrivateRoute><Roadmap /></PrivateRoute>
           } />
           <Route path="/" element={<Navigate to="/login" />} />
         </Routes>

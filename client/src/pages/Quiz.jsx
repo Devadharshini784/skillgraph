@@ -108,7 +108,7 @@ export default function Quiz() {
 
           <button
             style={styles.doneBtn}
-            onClick={() => navigate('/dashboard', { state: { score, role } })}
+            onClick={() => navigate('/roadmap')}
           >
             View My Roadmap →
           </button>

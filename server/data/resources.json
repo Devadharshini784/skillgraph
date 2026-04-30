@@ -1,0 +1,66 @@
+{
+  "javascript": [
+    { "title": "JavaScript Full Course", "url": "https://www.youtube.com/watch?v=PkZNo7MFNFg", "type": "video" },
+    { "title": "MDN JavaScript Guide", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide", "type": "docs" }
+  ],
+  "python": [
+    { "title": "Python for Beginners", "url": "https://www.youtube.com/watch?v=_uQrJ0TkZlc", "type": "video" },
+    { "title": "Python Official Docs", "url": "https://docs.python.org/3/tutorial/", "type": "docs" }
+  ],
+  "react": [
+    { "title": "React Full Course", "url": "https://www.youtube.com/watch?v=bMknfKXIFA8", "type": "video" },
+    { "title": "React Official Docs", "url": "https://react.dev/learn", "type": "docs" }
+  ],
+  "nodejs": [
+    { "title": "Node.js Full Course", "url": "https://www.youtube.com/watch?v=Oe421EPjeBE", "type": "video" },
+    { "title": "Node.js Official Docs", "url": "https://nodejs.org/en/docs", "type": "docs" }
+  ],
+  "postgresql": [
+    { "title": "PostgreSQL Full Course", "url": "https://www.youtube.com/watch?v=qw--VYLpxG4", "type": "video" },
+    { "title": "PostgreSQL Tutorial", "url": "https://www.postgresqltutorial.com", "type": "docs" }
+  ],
+  "docker": [
+    { "title": "Docker Full Course", "url": "https://www.youtube.com/watch?v=fqMOX6JJhGo", "type": "video" },
+    { "title": "Docker Official Docs", "url": "https://docs.docker.com/get-started/", "type": "docs" }
+  ],
+  "git": [
+    { "title": "Git Full Course", "url": "https://www.youtube.com/watch?v=RGOj5yH7evk", "type": "video" },
+    { "title": "Pro Git Book", "url": "https://git-scm.com/book/en/v2", "type": "docs" }
+  ],
+  "typescript": [
+    { "title": "TypeScript Full Course", "url": "https://www.youtube.com/watch?v=30LWjhZzg50", "type": "video" },
+    { "title": "TypeScript Handbook", "url": "https://www.typescriptlang.org/docs/handbook/intro.html", "type": "docs" }
+  ],
+  "mongodb": [
+    { "title": "MongoDB Full Course", "url": "https://www.youtube.com/watch?v=ofme2o29ngU", "type": "video" },
+    { "title": "MongoDB University", "url": "https://university.mongodb.com", "type": "docs" }
+  ],
+  "aws": [
+    { "title": "AWS Full Course", "url": "https://www.youtube.com/watch?v=k1RI5locZE4", "type": "video" },
+    { "title": "AWS Getting Started", "url": "https://aws.amazon.com/getting-started/", "type": "docs" }
+  ],
+  "css": [
+    { "title": "CSS Full Course", "url": "https://www.youtube.com/watch?v=OXGznpKZ_sA", "type": "video" },
+    { "title": "MDN CSS Guide", "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS", "type": "docs" }
+  ],
+  "html": [
+    { "title": "HTML Full Course", "url": "https://www.youtube.com/watch?v=pQN-pnXPaVg", "type": "video" },
+    { "title": "MDN HTML Guide", "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML", "type": "docs" }
+  ],
+  "linux": [
+    { "title": "Linux Full Course", "url": "https://www.youtube.com/watch?v=wBp0Rb-ZJak", "type": "video" },
+    { "title": "Linux Journey", "url": "https://linuxjourney.com", "type": "docs" }
+  ],
+  "redis": [
+    { "title": "Redis Full Course", "url": "https://www.youtube.com/watch?v=jgpVdJB2sKQ", "type": "video" },
+    { "title": "Redis Official Docs", "url": "https://redis.io/docs/", "type": "docs" }
+  ],
+  "express": [
+    { "title": "Express Full Course", "url": "https://www.youtube.com/watch?v=SccSCuHhOw0", "type": "video" },
+    { "title": "Express Official Docs", "url": "https://expressjs.com/en/starter/hello-world.html", "type": "docs" }
+  ],
+  "default": [
+    { "title": "Search on YouTube", "url": "https://www.youtube.com/results?search_query=learn+", "type": "video" },
+    { "title": "Search on MDN", "url": "https://developer.mozilla.org/en-US/search?q=", "type": "docs" }
+  ]
+}

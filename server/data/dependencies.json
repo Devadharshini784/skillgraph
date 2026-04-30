@@ -1,0 +1,20 @@
+{
+  "nodejs": ["javascript"],
+  "express": ["nodejs"],
+  "react": ["javascript", "html", "css"],
+  "nextjs": ["react"],
+  "redux": ["react"],
+  "typescript": ["javascript"],
+  "postgresql": ["sql"],
+  "mongodb": ["javascript"],
+  "graphql": ["rest api"],
+  "docker": ["linux"],
+  "kubernetes": ["docker"],
+  "aws": ["linux", "docker"],
+  "jest": ["javascript"],
+  "cypress": ["javascript"],
+  "nestjs": ["nodejs", "typescript"],
+  "prisma": ["postgresql"],
+  "tailwind": ["css"],
+  "redux": ["react", "javascript"]
+}
