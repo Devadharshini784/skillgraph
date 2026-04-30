@@ -24,3 +24,12 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+// Keep alive ping — prevents Render free tier from sleeping
+const https = require('https');
+setInterval(() => {
+  https.get('https://skillgraph-api.onrender.com', (res) => {
+    console.log('Keep alive ping sent');
+  }).on('error', (err) => {
+    console.log('Keep alive error:', err.message);
+  });
+}, 14 * 60 * 1000);
