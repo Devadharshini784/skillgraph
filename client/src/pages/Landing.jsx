@@ -152,7 +152,7 @@ export default function Landing() {
           <span style={{color:'#6e56f8'}}>Graph</span>
         </div>
         <p style={{color:'#7a7a90',fontSize:'13px',margin:0}}>
-          Built by Devadharshini — Final Year Project 2026
+          Built by Devadharshini 
         </p>
       </div>
 

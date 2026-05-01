@@ -63,10 +63,13 @@ export default function Dashboard() {
 
       {/* Header */}
       <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'20px 40px',borderBottom:'1px solid #2a2a35'}}>
-        <div style={{fontSize:'22px',fontWeight:'700'}}>
-          <span style={{color:'#e8e8f0'}}>Skill</span>
-          <span style={{color:'#6e56f8'}}>Graph</span>
-        </div>
+        <div 
+  style={{fontSize:'22px',fontWeight:'700',cursor:'pointer'}} 
+  onClick={() => navigate('/')}
+>
+  <span style={{color:'#e8e8f0'}}>Skill</span>
+  <span style={{color:'#6e56f8'}}>Graph</span>
+</div>
         <div style={{display:'flex',alignItems:'center',gap:'16px'}}>
           <span style={{color:'#7a7a90',fontSize:'14px'}}>{user?.email}</span>
           <button onClick={handleLogout} style={{background:'transparent',border:'1px solid #2a2a35',color:'#7a7a90',padding:'8px 16px',borderRadius:'8px',cursor:'pointer',fontSize:'13px'}}>
@@ -128,7 +131,7 @@ export default function Dashboard() {
                   onClick={() => navigate('/roadmap')}
                   style={{background:'#6e56f8',color:'white',border:'none',borderRadius:'10px',padding:'12px 24px',fontSize:'14px',cursor:'pointer',fontWeight:'600',whiteSpace:'nowrap'}}
                 >
-                  Continue Learning →
+                  {completedCount === totalWeeks ? 'Completed Learning ✓' : 'Continue Learning →'}
                 </button>
               </div>
             </div>

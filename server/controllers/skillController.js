@@ -7,7 +7,8 @@ const extractSkillsFromText = (text) => {
   const lowerText = text.toLowerCase();
   const skillCount = {};
   ALL_SKILLS.forEach((skill) => {
-    const regex = new RegExp('\\b' + skill.toLowerCase() + '\\b', 'gi');
+    const escapedSkill = skill.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp('\\b' + escapedSkill + '\\b', 'gi');
     const matches = lowerText.match(regex);
     if (matches) skillCount[skill] = (skillCount[skill] || 0) + matches.length;
   });
@@ -16,7 +17,7 @@ const extractSkillsFromText = (text) => {
 
 const getFallbackSkills = (role) => {
   const r = role.toLowerCase();
-  if (r.includes('backend') || r.includes('back end') || r.includes('back-end') || r.includes('server') || r.includes('api') || r.includes('node') || r.includes('django') || r.includes('flask')) {
+  if (r.includes('backend') || r.includes('back end') || r.includes('backend development') || r.includes('backend developer') || r.includes('api') || r.includes('node') || r.includes('django') || r.includes('flask')) {
     return [
       { skill: 'nodejs', count: 38 }, { skill: 'python', count: 35 },
       { skill: 'postgresql', count: 31 }, { skill: 'rest api', count: 28 },
@@ -25,7 +26,7 @@ const getFallbackSkills = (role) => {
       { skill: 'express', count: 17 }, { skill: 'redis', count: 15 }
     ];
   }
-  if (r.includes('frontend') || r.includes('front end') || r.includes('front-end') || r.includes('ui') || r.includes('ux') || r.includes('react') || r.includes('angular') || r.includes('vue')) {
+  if (r.includes('frontend') || r.includes('front end') || r.includes('frontend developer') || r.includes('ui') || r.includes('ux') || r.includes('react') || r.includes('frontend development') || r.includes('front end developer')) {
     return [
       { skill: 'react', count: 42 }, { skill: 'javascript', count: 40 },
       { skill: 'typescript', count: 35 }, { skill: 'css', count: 30 },
@@ -34,7 +35,7 @@ const getFallbackSkills = (role) => {
       { skill: 'redux', count: 15 }, { skill: 'figma', count: 12 }
     ];
   }
-  if (r.includes('fullstack') || r.includes('full stack') || r.includes('full-stack') || r.includes('mern') || r.includes('mean') || r.includes('software engineer') || r.includes('software developer') || r.includes('sde') || r.includes('swe')) {
+  if (r.includes('fullstack') || r.includes('full stack') || r.includes('fullstack') || r.includes('mern') || r.includes('fullstack developer') || r.includes('software engineer') || r.includes('software developer') || r.includes('full stack developer') || r.includes('full stack development')) {
     return [
       { skill: 'react', count: 40 }, { skill: 'nodejs', count: 38 },
       { skill: 'javascript', count: 36 }, { skill: 'postgresql', count: 30 },
@@ -43,7 +44,7 @@ const getFallbackSkills = (role) => {
       { skill: 'aws', count: 16 }, { skill: 'mongodb', count: 14 }
     ];
   }
-  if (r.includes('data') || r.includes('ml') || r.includes('machine learning') || r.includes('ai') || r.includes('analyst') || r.includes('scientist') || r.includes('deep learning') || r.includes('nlp')) {
+  if (r.includes('data analysis') || r.includes('analysts') || r.includes('machine learning') || r.includes('ai') || r.includes('data analyst') || r.includes('data scientist') || r.includes('deep learning') || r.includes('nlp')) {
     return [
       { skill: 'python', count: 45 }, { skill: 'machine learning', count: 38 },
       { skill: 'deep learning', count: 32 }, { skill: 'nlp', count: 28 },

@@ -73,10 +73,13 @@ export default function Roadmap() {
           <button onClick={() => navigate('/dashboard')} style={{background:'transparent',border:'1px solid #2a2a35',color:'#7a7a90',padding:'8px 14px',borderRadius:'8px',cursor:'pointer',fontSize:'13px'}}>
             Back
           </button>
-          <div style={{fontSize:'20px',fontWeight:'700'}}>
-            <span style={{color:'#e8e8f0'}}>Skill</span>
-            <span style={{color:'#6e56f8'}}>Graph</span>
-          </div>
+          <div 
+  style={{fontSize:'20px',fontWeight:'700',cursor:'pointer'}}
+  onClick={() => navigate('/')}
+>
+  <span style={{color:'#e8e8f0'}}>Skill</span>
+  <span style={{color:'#6e56f8'}}>Graph</span>
+</div>
         </div>
         <span style={{background:'#1a1040',color:'#a78bfa',padding:'6px 14px',borderRadius:'20px',fontSize:'13px',border:'1px solid #3a2a8a'}}>
           {progressPercent}% Complete
