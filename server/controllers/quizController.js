@@ -5,7 +5,6 @@ const submitQuiz = async (req, res) => {
   const userId = req.user.id;
 
   try {
-    // Calculate readiness score
     let totalWeight = 0;
     let earnedWeight = 0;
 
@@ -18,12 +17,14 @@ const submitQuiz = async (req, res) => {
 
     const readinessScore = Math.round((earnedWeight / totalWeight) * 100);
 
-    // Save each skill to DB
+    // Clear old data for this user before saving new quiz
+    await pool.query('DELETE FROM roadmap_weeks WHERE user_id = $1', [userId]);
+    await pool.query('DELETE FROM user_skills WHERE user_id = $1', [userId]);
+
     for (const skillItem of skills) {
       const confidence = answers[skillItem.skill] ?? 0;
       const status = confidence === 2 ? 'known' : confidence === 1 ? 'learning' : 'todo';
 
-      // Find or create skill
       let skillRecord = await pool.query('SELECT id FROM skills WHERE name = $1', [skillItem.skill]);
       let skillId;
 
@@ -37,7 +38,6 @@ const submitQuiz = async (req, res) => {
         skillId = skillRecord.rows[0].id;
       }
 
-      // Save user skill
       await pool.query(`
         INSERT INTO user_skills (user_id, skill_id, status, confidence)
         VALUES ($1, $2, $3, $4)
@@ -46,10 +46,9 @@ const submitQuiz = async (req, res) => {
       `, [userId, skillId, status, confidence]);
     }
 
-    // Update target role
     await pool.query('UPDATE users SET target_role = $1 WHERE id = $2', [role, userId]);
 
-    console.log(`Quiz saved for user ${userId} — score: ${readinessScore}%`);
+    console.log('Quiz saved for user ' + userId + ' — score: ' + readinessScore + '%');
 
     res.json({ message: 'Quiz submitted!', readinessScore });
 

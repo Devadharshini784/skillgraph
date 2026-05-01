@@ -34,27 +34,37 @@ export default function Quiz() {
   };
 
   const handleSubmit = async (finalAnswers) => {
-    setSubmitting(true);
-    try {
-      const res = await API.post('/skills/quiz', {
-        role,
-        answers: finalAnswers,
-        skills
-      });
-      setScore(res.data.readinessScore);
-      setSubmitted(true);
-    } catch (err) {
-      console.error('Quiz submit error:', err);
-      // Calculate score locally as fallback
-      const known = Object.values(finalAnswers).filter(v => v === 2).length;
-      const learning = Object.values(finalAnswers).filter(v => v === 1).length;
-      const localScore = Math.round(((known + learning * 0.5) / skills.length) * 100);
-      setScore(localScore);
-      setSubmitted(true);
-    } finally {
-      setSubmitting(false);
-    }
-  };
+  setSubmitting(true);
+  try {
+    const quizRes = await API.post('/skills/quiz', {
+      role,
+      answers: finalAnswers,
+      skills
+    });
+
+    const gapSkills = skills.filter(s => {
+      const confidence = finalAnswers[s.skill] ?? 0;
+      return confidence < 2;
+    });
+
+    await API.post('/roadmap/generate', {
+      role,
+      skills: gapSkills.length > 0 ? gapSkills : skills
+    });
+
+    setScore(quizRes.data.readinessScore);
+    setSubmitted(true);
+  } catch (err) {
+    console.error('Quiz submit error:', err);
+    const known = Object.values(finalAnswers).filter(v => v === 2).length;
+    const learning = Object.values(finalAnswers).filter(v => v === 1).length;
+    const localScore = Math.round(((known + learning * 0.5) / skills.length) * 100);
+    setScore(localScore);
+    setSubmitted(true);
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   if (submitting) {
     return (

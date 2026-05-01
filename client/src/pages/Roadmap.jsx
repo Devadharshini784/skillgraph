@@ -115,7 +115,25 @@ export default function Roadmap() {
           </span>
         </div>
 
+        {completedCount === totalWeeks && totalWeeks > 0 && (
+  <div style={{background:'#0d2a1e',border:'1px solid #34d399',borderRadius:'16px',padding:'32px',marginBottom:'24px',textAlign:'center'}}>
+    <p style={{fontSize:'48px',margin:'0 0 12px'}}>🎉</p>
+    <h2 style={{color:'#34d399',fontSize:'24px',fontWeight:'700',marginBottom:'8px'}}>
+      Roadmap Complete!
+    </h2>
+    <p style={{color:'#7a7a90',fontSize:'14px',marginBottom:'20px'}}>
+      You finished all {totalWeeks} weeks. Time to apply for jobs!
+    </p>
+    <button
+      onClick={() => navigate('/dashboard')}
+      style={{background:'#34d399',color:'#0d1f14',border:'none',borderRadius:'8px',padding:'12px 28px',fontSize:'14px',cursor:'pointer',fontWeight:'700'}}
+    >
+      Go update your resume →
+    </button>
+  </div>
+)}
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:'16px'}}>
+
           {weeks.map((week) => {
             const isCompleted = completedWeeks.has(week.week);
             return (
