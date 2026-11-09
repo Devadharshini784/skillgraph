@@ -1,6 +1,6 @@
 # SkillGraph 🗺️
 
-> Know exactly what to learn to get hired.
+> Know exactly what to learn to get hired in today's Job market.
 
 SkillGraph analyzes real job descriptions, identifies your skill gaps through a personalized quiz, and generates a week-by-week learning roadmap — all for free.
 
